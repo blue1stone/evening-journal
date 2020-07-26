@@ -39,7 +39,7 @@ class OverviewScreen extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Container(
-                        width: 35,
+                        width: 40,
                         child: Image.asset(
                           'assets/images/moon.png',
                           color: Color(0xFFF2D1B3),

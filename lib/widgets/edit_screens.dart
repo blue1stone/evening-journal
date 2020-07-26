@@ -45,7 +45,7 @@ class _AchieveScreenState extends State<AchieveScreen> {
           Container(
             padding:
                 EdgeInsets.only(top: statusBarSize + 15, left: 20, right: 15),
-            height: 170,
+            height: 230,
             alignment: Alignment.centerLeft,
             child: Row(
               children: <Widget>[
@@ -77,6 +77,7 @@ class _AchieveScreenState extends State<AchieveScreen> {
                         child: TextField(
                           key: ValueKey(i),
                           focusNode: focusNode,
+                          textCapitalization: TextCapitalization.sentences,
                           controller: textEditingController,
                           cursorColor: Theme.of(context).accentColor,
                           style: Theme.of(context).textTheme.headline6,
@@ -112,6 +113,7 @@ class _AchieveScreenState extends State<AchieveScreen> {
                       child: TextField(
                         style: Theme.of(context).textTheme.headline6,
                         maxLines: 1,
+                        textCapitalization: TextCapitalization.sentences,
                         cursorColor: Theme.of(context).accentColor,
                         controller: TextEditingController()
                           ..text = achievements[i],
@@ -190,7 +192,7 @@ class _BetterScreenState extends State<BetterScreen> {
         Container(
           padding:
               EdgeInsets.only(top: statusBarSize + 15, left: 20, right: 15),
-          height: 170,
+          height: 230,
           alignment: Alignment.centerLeft,
           child: Row(
             children: <Widget>[
@@ -216,6 +218,7 @@ class _BetterScreenState extends State<BetterScreen> {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: TextField(
+                textCapitalization: TextCapitalization.sentences,
                 style: Theme.of(context).textTheme.headline6,
                 cursorColor: Theme.of(context).accentColor,
                 maxLines: null,
@@ -283,7 +286,7 @@ class _RateScreenState extends State<RateScreen> {
         Container(
           padding:
               EdgeInsets.only(top: statusBarSize + 15, left: 20, right: 15),
-          height: 170,
+          height: 230,
           alignment: Alignment.centerLeft,
           child: Row(
             children: <Widget>[
@@ -392,7 +395,7 @@ class _HighlightScreenState extends State<HighlightScreen> {
         Container(
           padding:
               EdgeInsets.only(top: statusBarSize + 15, left: 20, right: 15),
-          height: 170,
+          height: 230,
           alignment: Alignment.centerLeft,
           child: Row(
             children: <Widget>[
@@ -418,6 +421,7 @@ class _HighlightScreenState extends State<HighlightScreen> {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: TextField(
+                textCapitalization: TextCapitalization.sentences,
                 style: Theme.of(context).textTheme.headline6,
                 cursorColor: Theme.of(context).accentColor,
                 maxLines: null,
