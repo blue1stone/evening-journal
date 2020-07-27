@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Evening Journal',
         theme: ThemeData(
           brightness: Brightness.dark,
