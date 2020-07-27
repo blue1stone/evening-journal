@@ -1,4 +1,7 @@
+import 'package:moor/moor.dart';
 import 'package:moor_flutter/moor_flutter.dart';
+// import 'package:moor/moor.dart';
+// import 'package:moor_ffi/moor_ffi.dart';
 // import 'package:path_provider/path_provider.dart';
 // import 'package:path/path.dart' as p;
 // import 'dart:io';
@@ -31,20 +34,21 @@ class AppDatabase extends _$AppDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<List<Day>> getAllDays() => (select(days)..orderBy([(d) => OrderingTerm.desc(d.date)])).get();
-  Stream<List<Day>> watchAllDays() => (select(days)..orderBy([(d) => OrderingTerm.desc(d.date)])).watch();
-  Stream<Day> watchDay(String id) => (select(days)..where((day) => day.id.equals(id))).watchSingle();
-  Future<Day> getDay(String id) => (select(days)..where((day) => day.id.equals(id))).getSingle();
-  Future<Day> getLatestDay() => (select(days)..orderBy([(d) => OrderingTerm.desc(d.date)])..limit(1)).getSingle();
-  Future upsertDay(Day day) => into(days).insertOnConflictUpdate(day);
+  Future<List<Day>> getAllDays() =>
+      (select(days)..orderBy([(d) => OrderingTerm.desc(d.date)])).get();
+  Stream<List<Day>> watchAllDays() =>
+      (select(days)..orderBy([(d) => OrderingTerm.desc(d.date)])).watch();
+  Stream<Day> watchDay(String id) =>
+      (select(days)..where((day) => day.id.equals(id))).watchSingle();
+  Future<Day> getDay(String id) =>
+      (select(days)..where((day) => day.id.equals(id))).getSingle();
+  Future<Day> getLatestDay() => (select(days)
+        ..orderBy([(d) => OrderingTerm.desc(d.date)])
+        ..limit(1))
+      .getSingle();
+  Future upsertDay(Day day) => into(days).insert(day, mode: InsertMode.insertOrReplace);
   Future deleteDay(Day day) => delete(days).delete(day);
-
 }
-
-
-
-
-
 
 // LazyDatabase _openConnection() {
 //   // the LazyDatabase util lets us find the right location for the file async.
