@@ -26,7 +26,7 @@ class _AlarmTimePickerState extends State<AlarmTimePicker> {
           Switch(
             value: widget.sharedPreferences.getBool('alarmOn'),
             onChanged: (val) async {
-              widget.sharedPreferences.setBool('alarmOn', val);
+              await widget.sharedPreferences.setBool('alarmOn', val);
               if (val) {
                 final time = DateTime.parse(
                     widget.sharedPreferences.getString('alarmTime'));
@@ -60,7 +60,7 @@ class _AlarmTimePickerState extends State<AlarmTimePicker> {
                 initialTime: TimeOfDay.now(),
               );
               if (pickedTime == null) return;
-              widget.sharedPreferences.setString(
+              await widget.sharedPreferences.setString(
                   'alarmTime',
                   DateTime(2020, 1, 1, pickedTime.hour, pickedTime.minute)
                       .toIso8601String());

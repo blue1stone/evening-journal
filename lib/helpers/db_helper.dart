@@ -1,8 +1,7 @@
-import 'package:moor_ffi/moor_ffi.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as p;
-import 'package:moor/moor.dart';
-import 'dart:io';
+import 'package:moor_flutter/moor_flutter.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:path/path.dart' as p;
+// import 'dart:io';
 
 part 'db_helper.g.dart';
 
@@ -20,7 +19,14 @@ class Days extends Table {
 
 @UseMoor(tables: [Days])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  // AppDatabase() : super(_openConnection());
+  AppDatabase()
+      // Specify the location of the database file
+      : super((FlutterQueryExecutor.inDatabaseFolder(
+          path: 'db.sqlite',
+          // Good for debugging - prints SQL in the console
+          // logStatements: true,
+        )));
 
   @override
   int get schemaVersion => 1;
@@ -40,13 +46,13 @@ class AppDatabase extends _$AppDatabase {
 
 
 
-LazyDatabase _openConnection() {
-  // the LazyDatabase util lets us find the right location for the file async.
-  return LazyDatabase(() async {
-    // put the database file, called db.sqlite here, into the documents folder
-    // for your app.
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db.sqlite'));
-    return VmDatabase(file);
-  });
-}
+// LazyDatabase _openConnection() {
+//   // the LazyDatabase util lets us find the right location for the file async.
+//   return LazyDatabase(() async {
+//     // put the database file, called db.sqlite here, into the documents folder
+//     // for your app.
+//     final dbFolder = await getApplicationDocumentsDirectory();
+//     final file = File(p.join(dbFolder.path, 'db.sqlite'));
+//     return VmDatabase(file);
+//   });
+// }

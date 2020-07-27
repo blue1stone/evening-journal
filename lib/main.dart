@@ -23,9 +23,9 @@ Future<void> main() async {
   await initNotifications(flutterLocalNotificationsPlugin);
 
   final sharedPreferences = await SharedPreferences.getInstance();
-  sharedPreferences.setBool(
+  await sharedPreferences.setBool(
       'alarmOn', sharedPreferences.getBool('alarmOn') ?? false);
-  sharedPreferences.setString(
+  await sharedPreferences.setString(
       'alarmTime',
       sharedPreferences.getString('alarmTime') ??
           DateTime(2020, 1, 1, 12, 0).toIso8601String());
